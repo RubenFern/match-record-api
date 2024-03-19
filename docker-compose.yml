@@ -5,7 +5,7 @@ services:
     container_name: sports-db
     image: mongo:6.0.13
     volumes:
-      - ./db/mongo:/data/sports
+      - ./database/mongo:/data/sports
     ports:
       - 27017:27017
     restart: always
@@ -14,7 +14,7 @@ services:
     image: mariadb
     restart: always
     volumes:
-      - ./db/mariadb:/data/users
+      - ./database/mariadb:/data/users
     ports:
       - 3306:3306
     environment:
