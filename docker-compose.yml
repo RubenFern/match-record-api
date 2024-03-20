@@ -8,14 +8,14 @@ services:
       - ./database/mongo:/data/sports
     ports:
       - 27017:27017
-    restart: always
   
   mariadb:
+    container_name: users-db
     image: mariadb
     restart: always
     volumes:
       - ./database/mariadb:/data/users
     ports:
-      - 3306:3306
+      - 3307:3307
     environment:
       MARIADB_ROOT_PASSWORD: example
