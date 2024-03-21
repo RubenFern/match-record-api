@@ -4,22 +4,20 @@ import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signIn.dto';
 import { AuthGuard } from './auth.guard';
 import { SignUpDto } from './dto/signUp.dto';
-import { UsersService } from 'src/users/users.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller('auth')
 export class AuthController 
 {
-    constructor(
-        private readonly authService: AuthService,
-        private readonly userService: UsersService
-    ) {}
+    constructor(private readonly authService: AuthService) {}
 
     @HttpCode(HttpStatus.OK)
     @Post('login')
-    signIn(@Body() signInDto: SignInDto)
+    signIn(@Body() signInDto: SignInDto, @Res() res: Response)
     {
-        return this.authService.signIn(signInDto);
+        return this.authService.signIn(signInDto)
+            .then(token => res.status(HttpStatus.CREATED).send(token))
+            .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error));
     }
 
     @HttpCode(HttpStatus.OK)
@@ -32,8 +30,18 @@ export class AuthController
     }
 
     @UseGuards(AuthGuard)
-    @Get('profile')
-    getProfile(@Req() req) 
+    @HttpCode(HttpStatus.OK)
+    @Get('logout')
+    logout(@Req() req: Request, @Res() res: Response)
+    {
+        this.authService.logout(req)
+            .then(message => res.status(HttpStatus.OK).send(message))
+            .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error));
+    }
+
+    @UseGuards(AuthGuard)
+    @Get('validate-token')
+    validateToken(@Req() req) 
     {
         return req.user;
     }
