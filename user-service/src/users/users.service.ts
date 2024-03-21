@@ -2,8 +2,6 @@ import { Inject, Injectable } from "@nestjs/common";
 
 import { USERS_REPOSITORY } from "src/constants";
 import { User } from "./user.entity";
-import { CreateUserDto } from './dto/create.dto';
-import { genSalt, hash, compare } from 'bcrypt';
 
 @Injectable()
 export class UsersService
@@ -13,13 +11,14 @@ export class UsersService
         private readonly usersRepository: typeof User
     ) {}
 
-    async add(createUserDto: CreateUserDto): Promise<User>
+    async save(name: string, username: string, email: string, password: string): Promise<User>
     {
         const user = new User();
-        user.name = createUserDto.name;
-        user.username = createUserDto.username;
-        user.email = createUserDto.email;
-        user.password = await hashPassowrd(createUserDto.password);
+
+        user.name = name;
+        user.username = username;
+        user.email = email;
+        user.password = password;
 
         const userData = await user.save();
 
@@ -30,11 +29,4 @@ export class UsersService
     {
         return await this.usersRepository.findOne({ where: { username: username } });
     }
-}
-
-const hashPassowrd = async (password: string) => 
-{
-    const salt = await genSalt(10);
-    
-    return await hash(password, salt);
 }
