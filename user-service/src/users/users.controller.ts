@@ -17,7 +17,7 @@ export class UsersController
                 res.status(HttpStatus.CREATED).send({ user: user });
             })
             .catch(error => {
-                res.status(HttpStatus.BAD_REQUEST).send({ error: error });
-            })
+                res.status(HttpStatus.BAD_REQUEST).send({ error: error.errors[0].message });
+            });
     }
 }
