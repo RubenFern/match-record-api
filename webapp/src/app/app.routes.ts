@@ -1,3 +1,23 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { LayoutComponent } from './auth/pages/layout/layout.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
+import { Error404Component } from './shared/pages/error404/error404.component';
+
+export const routes: Routes = [
+    {
+        path: 'auth',
+        component: LayoutComponent,
+        canActivate: [],
+        children: [
+            { path: '', redirectTo: 'login', pathMatch: 'full' },
+            { path: 'login', component: LoginComponent },
+            { path: 'register', component: RegisterComponent }
+        ]
+    },
+    { path: '404', component: Error404Component },
+
+    { path: '', redirectTo: 'heroes', pathMatch: 'full' },
+    { path: '**', redirectTo: '404' }
+];

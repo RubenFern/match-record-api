@@ -1,0 +1,24 @@
+<div class="h-5/6 grid content-center" id="form">
+    <div class="flex flex-col content-center mx-auto w-full p-5 lg:p-0 lg:w-5/12">
+        <h1 class="text-4xl text-center mb-4 text-dark dark:text-white">Inicio de sesión</h1>
+
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input type="text" matInput placeholder="Nombre de usuario">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput placeholder="Contraseña">
+        </mat-form-field>
+
+        <button mat-button mat-flat-button color="primary">
+            <mat-icon>login</mat-icon>
+            Iniciar sesión
+        </button>
+
+        <div class="flex justify-end mt-5 text-dark dark:text-white">
+            <a routerLink="/auth/register">¿Ya tienes una cuenta?</a>
+        </div>
+    </div>
+</div>
