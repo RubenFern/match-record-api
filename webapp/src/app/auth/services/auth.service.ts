@@ -21,7 +21,8 @@ export class AuthService
     {
         this.http.post<Token>(`${ environments.API_GATEWAY }/auth/login`, { username, password })
             .pipe(
-                tap( token => {
+                tap( token =>
+                {
                     if (token.token)
                         localStorage.setItem('token', token.token)
                 })

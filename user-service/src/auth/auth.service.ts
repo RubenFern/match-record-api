@@ -21,9 +21,10 @@ export class AuthService
     async signIn(signInDto: SignInDto): Promise<{ token: string }>
     {
         const user = await this.usersService.findOne(signInDto.username);
-        const hasPassword = await this.hashPassowrd(signInDto.password);
+        
+        const samePassword: boolean = await compare(signInDto.password, user.password);
 
-        if (!user && !(await compare(hasPassword, user.password)))
+        if (!user || !samePassword)
             throw new UnauthorizedException();
 
         const payload = { username: user.username };
