@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, Length, AllowNull, Unique } from 'sequelize-typescript';
 const { v4: uuidv4 } = require('uuid');
 
 @Table
@@ -31,6 +31,11 @@ export class User extends Model
     })
     email: string;
 
+    @Length({ 
+        msg: 'Password must be 8 characters long', 
+        min: 8, 
+        max: 40 
+    })
     @Column({
         type: DataType.STRING,
         allowNull: false,

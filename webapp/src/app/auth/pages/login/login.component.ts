@@ -26,7 +26,7 @@ export class LoginComponent
     ) {}
 
     public userForm = new FormGroup({
-        user:    new FormControl<string>(''),
+        user:       new FormControl<string>(''),
         password:   new FormControl<string>('')
     });
 
@@ -37,7 +37,10 @@ export class LoginComponent
 
     public onLogin(): void
     {
-        this.authService.login(this.currentUser.user, this.currentUser.password)
+        this.authService.login(
+            this.currentUser.user,
+            this.currentUser.password
+            )
             .subscribe( /** router.navigate */ );
     }
 }

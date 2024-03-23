@@ -7,7 +7,7 @@ import { SignUpDto } from './dto/signUp.dto';
 import { Request, Response } from 'express';
 
 @Controller('auth')
-export class AuthController 
+export class AuthController
 {
     constructor(private readonly authService: AuthService) {}
 

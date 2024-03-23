@@ -1,27 +1,48 @@
-<div class="flex flex-col">
-    <span class="text-lg mb-4">Registro</span>
+<div class="h-5/6 grid content-center" id="form">
+    <form [formGroup]="userForm" class="flex flex-col content-center mx-auto w-full p-5 lg:p-0 lg:w-5/12">
+        <h1 class="text-4xl text-center mb-4 text-dark dark:text-white">Registro</h1>
 
-    <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <input type="text" matInput placeholder="Nombre de usuario">
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label for="name">Nombre</mat-label>
+            <input type="text" id="name" matInput placeholder="Nombre" formControlName="name" required>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input type="text" matInput placeholder="Nombre de usuario">
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label for="username">Nombre de usuario</mat-label>
+            <input type="text" id="username" matInput placeholder="Nombre de usuario" formControlName="username" required>
+            @if (errorOnRegister === errorUsername) { <mat-error>{{ errorMessages.ERROR_USERNAME }}</mat-error> }
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput placeholder="Contraseña">
-    </mat-form-field>
+        <mat-form-field>
+            <mat-label for="email">Correo electrónico</mat-label>
+            <input type="text" id="email" matInput placeholder="Correo electrónico" formControlName="email" required>
+            @if (errorOnRegister === errorEmail) { <mat-error>{{ errorMessages.ERROR_EMAIL }}</mat-error> }
+        </mat-form-field>
 
-    <button mat-button mat-flat-button color="primary">
-        <mat-icon>save</mat-icon>
-        Crear cuenta
-    </button>
+        <mat-form-field>
+            <mat-label for="password">Contraseña</mat-label>
+            <input type="password" id="password" matInput placeholder="Contraseña" formControlName="password" required>
+            @if (errorOnRegister === errorPassword) { <mat-error>{{ errorMessages.ERROR_PASSWORD }}</mat-error> }
+        </mat-form-field>
 
-    <div class="flex justify-content-end mt-5">
-        <a routerLink="/auth/login">¿No tienes una cuenta?</a>
-    </div>
+        <mat-form-field>
+            <mat-label for="confirmPassword">Repite la contraseña</mat-label>
+            <input type="password" id="confirmPassword" matInput placeholder="Repite la contraseña" formControlName="confirmPassword" required>
+            @if (errorOnRegister === errorConfirmPassword) { <mat-error>{{ errorMessages.ERROR_CONFIRMPASSWORD }}</mat-error> }
+        </mat-form-field>
+
+        <button
+            mat-button
+            mat-flat-button
+            color="primary"
+            (click)="onRegister()"
+        >
+            <mat-icon>save</mat-icon>
+            Crear cuenta
+        </button>
+
+        <div class="flex justify-end mt-5 text-dark dark:text-white">
+            <a routerLink="/auth/login">¿Ya tienes una cuenta?</a>
+        </div>
+    </form>
 </div>

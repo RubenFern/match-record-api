@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 
 import { environments } from '../../../environments/environments';
-import { Token, User } from '../interfaces/user.interface';
+import { Auth, User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +17,46 @@ export class AuthService
         return undefined;
     }
 
-    public login(username: string, password: string): Observable<boolean>
+    public login(username: string, password: string): Observable<string>
     {
-        this.http.post<Token>(`${ environments.API_GATEWAY }/auth/login`, { username, password })
+        return this.http.post<Auth>(`${ environments.API_GATEWAY }/auth/login`, { username, password })
             .pipe(
-                tap( token =>
+                catchError(error =>
                 {
-                    if (token.token)
-                        localStorage.setItem('token', token.token)
+                    return of(error.error);
+                }),
+                map(value =>
+                {
+                    if (value.token)
+                    {
+                        localStorage.setItem('token', value.token);
+                        return '';
+                    }
+                    else
+                        return value.error;
                 })
-            )
-            .subscribe();
+            );
+    }
 
-        return of(localStorage.getItem('token') !== null);
+    public register(name: string, username: string, email: string, password: string): Observable<string>
+    {
+        return this.http.post<Auth>(`${ environments.API_GATEWAY }/auth/register`, { name, username, email, password })
+            .pipe(
+                catchError(error =>
+                {
+                    return of(error.error);
+                }),
+                map(value =>
+                {
+                    if (value.token)
+                    {
+                        localStorage.setItem('token', value.token);
+                        return '';
+                    }
+                    else
+                        return value.error;
+                })
+            );
     }
 
     /*public checkAuthentication(): Observable<boolean>
