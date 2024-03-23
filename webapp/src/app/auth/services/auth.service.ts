@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 
 import { environments } from '../../../environments/environments';
-import { User } from '../interfaces/user.interface';
+import { Token, User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ export class AuthService
 {
     constructor(private http: HttpClient) {}
 
-
     get currentUser(): User | undefined
     {
         return undefined;
@@ -20,19 +19,14 @@ export class AuthService
 
     public login(username: string, password: string): Observable<boolean>
     {
-        console.log("hola");
-
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/json'
-            })
-        };
-
-        this.http.post<string>(`${ environments.API_GATEWAY }/auth/login`, { username, password }, httpOptions)
+        this.http.post<Token>(`${ environments.API_GATEWAY }/auth/login`, { username, password })
             .pipe(
-                tap( res => console.log(res) ),
-                tap( token => localStorage.setItem('token', token.toString()) )
-            );
+                tap( token => {
+                    if (token.token)
+                        localStorage.setItem('token', token.token)
+                })
+            )
+            .subscribe();
 
         return of(localStorage.getItem('token') !== null);
     }

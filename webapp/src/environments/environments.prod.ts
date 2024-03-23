@@ -1,4 +1,4 @@
 
 export const environments = {
-    baseUrl: 'http://localhost:3000'
+    API_GATEWAY: 'http://localhost:8002'
 };

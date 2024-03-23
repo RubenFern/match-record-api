@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
 
 import { SignUpDto } from './dto/signUp.dto';
-import { USERS_API } from 'src/constants';
 import { SignInDto } from './dto/signIn.dto';
+import { environments } from 'environments/environments';
 
 @Injectable()
 export class AuthService 
@@ -14,11 +14,11 @@ export class AuthService
 
     signUp(signUpDto: SignUpDto): Observable<AxiosResponse<{ message: string }>>
     {
-        return this.httpService.post(`${USERS_API}/register`, { ...signUpDto });
+        return this.httpService.post(`${ environments.USERS_SERVICE }/auth/register`, { ...signUpDto });
     }
 
     signIn(signInDto: SignInDto): Observable<AxiosResponse<{ message: string }>>
     {
-        return this.httpService.post(`${USERS_API}/login`, { ...signInDto });
+        return this.httpService.post(`${ environments.USERS_SERVICE }/auth/login`, { ...signInDto });
     }
 }
