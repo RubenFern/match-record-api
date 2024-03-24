@@ -19,7 +19,7 @@ export class SignUpDto
     @IsNotEmpty()
     readonly email: string;
 
-    @MinLength(10)
+    @MinLength(8)
     @IsNotEmpty()
     readonly password: string;
 }

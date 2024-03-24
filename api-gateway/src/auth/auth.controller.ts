@@ -17,7 +17,12 @@ export class AuthController
         this.authService.signUp(signUpDto)
             .subscribe({
                 next: result => res.status(HttpStatus.OK).send(result.data),
-                error: error => res.status(HttpStatus.BAD_REQUEST).send(error)
+                error: error => {
+                    if (error.response.data.message)
+                        res.status(HttpStatus.BAD_REQUEST).send({ error: error.response.data.message[0].message });
+                    else
+                        res.status(HttpStatus.BAD_REQUEST).send(error) 
+                }
             });
     }
 

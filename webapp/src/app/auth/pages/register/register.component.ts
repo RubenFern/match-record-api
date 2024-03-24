@@ -62,7 +62,6 @@ export class RegisterComponent
             )
             .subscribe( value =>
                 {
-                    console.log(value);
                     this.errorOnRegister = value
 
                     this.checkErrors(this.errorOnRegister);

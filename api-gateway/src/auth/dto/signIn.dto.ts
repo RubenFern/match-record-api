@@ -10,7 +10,7 @@ export class SignInDto
     @IsNotEmpty()
     readonly username: string;
 
-    @MinLength(10)
+    @MinLength(8)
     @IsNotEmpty()
     readonly password: string;
 }

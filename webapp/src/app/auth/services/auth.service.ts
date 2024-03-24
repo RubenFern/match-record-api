@@ -54,7 +54,9 @@ export class AuthService
                         return '';
                     }
                     else
+                    {
                         return value.error;
+                    }
                 })
             );
     }
