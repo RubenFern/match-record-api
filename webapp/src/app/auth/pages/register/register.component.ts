@@ -33,11 +33,11 @@ export class RegisterComponent
     ) {}
 
     public userForm = new FormGroup({
-        name:               new FormControl<string>('prueba'),
-        username:           new FormControl<string>('prueba'),
-        email:              new FormControl<string>('p@email.com'),
-        password:           new FormControl<string>('1234567890'),
-        confirmPassword:    new FormControl<string>('1234567890')
+        name:               new FormControl<string>(''),
+        username:           new FormControl<string>(''),
+        email:              new FormControl<string>(''),
+        password:           new FormControl<string>(''),
+        confirmPassword:    new FormControl<string>('')
     });
 
     get currentCreateUser(): CreateUser

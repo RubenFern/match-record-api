@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 # databases
-database/
+database/mariadb/
+database/mongo/
