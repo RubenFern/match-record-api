@@ -4,9 +4,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModules } from '../../../../material/material.modules';
 import { AuthService } from '../../services/auth.service';
-import { CreateUser, EmptyErrors, ErrorsSignUp } from '../../interfaces/user.interface';
+import { CreateUser, EmptyErrorsSignUp, ErrorsSignUp } from '../../interfaces/user.interface';
 import { ERROR_CONFIRMPASSWORD, ERROR_PASSWORD, ERROR_USERNAME, ERROR_EMAIL, ERROR_EMPTY_NAME, ERROR_EMPTY_USERNAME, ERROR_EMPTY_CONFIRMPASSWORD, ERROR_EMPTY_PASSWORD, ERROR_EMPTY_EMAIL } from '../../../../lang/messages';
-import { emptyErrors, errors } from '../../../../lang/messages_es';
+import { emptyErrorsSignUp, errorsSignUp } from '../../../../lang/messages_es';
 
 @Component({
     selector: 'app-register',
@@ -22,8 +22,8 @@ import { emptyErrors, errors } from '../../../../lang/messages_es';
 export class RegisterComponent
 {
     public errorOnRegister:             string = '';
-    public errorMessages:               ErrorsSignUp = errors;
-    public emptyErrors:                 EmptyErrors = emptyErrors;
+    public errorMessages:               ErrorsSignUp = errorsSignUp;
+    public emptyErrors:                 EmptyErrorsSignUp = emptyErrorsSignUp;
     public errorEmptyName:              boolean = false;
     public errorUsername:               string = ERROR_USERNAME;
     public errorEmptyUsername:          boolean = false;

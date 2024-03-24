@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 import { environments } from '../../../environments/environments';
 import { Auth, User } from '../interfaces/user.interface';
@@ -54,9 +54,7 @@ export class AuthService
                         return '';
                     }
                     else
-                    {
                         return value.error;
-                    }
                 })
             );
     }

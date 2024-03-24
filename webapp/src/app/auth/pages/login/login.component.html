@@ -3,13 +3,17 @@
         <h1 class="text-4xl text-center mb-4 text-dark dark:text-white">Inicio de sesión</h1>
 
         <mat-form-field>
-            <mat-label for="user">Usuario</mat-label>
-            <input id="user" type="text" matInput placeholder="Nombre de usuario" formControlName="user">
+            <mat-label for="username">Nombre de usuario</mat-label>
+            <input id="username" type="text" matInput placeholder="Nombre de usuario" formControlName="username" required>
+            @if (errorOnRegister === errorUsername) { <mat-error>{{ errorMessages.ERROR_USERNAME }}</mat-error> }
+            @if (errorEmptyUsername) { <mat-error>{{ emptyErrors['username'] }}</mat-error> }
         </mat-form-field>
 
         <mat-form-field>
             <mat-label for="password">Contraseña</mat-label>
-            <input id="password" type="password" matInput placeholder="Contraseña" formControlName="password">
+            <input id="password" type="password" matInput placeholder="Contraseña" formControlName="password" required>
+            @if (errorOnRegister === errorPassword) { <mat-error>{{ errorMessages.ERROR_PASSWORD }}</mat-error> }
+            @if (errorEmptyPassword) { <mat-error>{{ emptyErrors['password'] }}</mat-error> }
         </mat-form-field>
 
         <button

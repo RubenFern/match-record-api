@@ -18,14 +18,12 @@ export class AuthService
         private readonly jwtService: JwtService
     ) {}
 
-    async signIn(signInDto: SignInDto): Promise<{ token: string }>
+    async signIn(signInDto: SignInDto): Promise<{ token: string } | { error: string }>
     {
         const user = await this.usersService.findOne(signInDto.username);
-        
-        const samePassword: boolean = await compare(signInDto.password, user.password);
-
-        if (!user || !samePassword)
-            throw new UnauthorizedException();
+    
+        if (!user || !(await compare(signInDto.password, user.password)))
+            throw new UnauthorizedException('Username or password incorrects');
 
         const payload = { username: user.username };
 

@@ -7,3 +7,4 @@ export const ERROR_PASSWORD                 = 'password must be longer than or e
 export const ERROR_EMPTY_PASSWORD           = 'password should not be empty';
 export const ERROR_CONFIRMPASSWORD          = 'Passwords do not match';
 export const ERROR_EMPTY_CONFIRMPASSWORD    = 'ConfirmPassword should not be empty';
+export const ERROR_LOGIN                    = 'Username or password incorrects';

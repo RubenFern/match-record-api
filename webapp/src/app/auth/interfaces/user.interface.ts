@@ -9,7 +9,7 @@ export interface CreateUser
 
 export interface User
 {
-    user: string;
+    username: string;
     password:   string;
 }
 
@@ -27,11 +27,23 @@ export interface ErrorsSignUp
     ERROR_CONFIRMPASSWORD: string
 }
 
-export interface EmptyErrors
+export interface ErrorsSignIn
+{
+    ERROR_USERNAME: string,
+    ERROR_PASSWORD: string
+}
+
+export interface EmptyErrorsSignUp
 {
     name: string,
     username: string,
     email: string,
     password: string,
     confirmPassword: string
+}
+
+export interface EmptyErrorsSignIn
+{
+    username: string,
+    password: string
 }
