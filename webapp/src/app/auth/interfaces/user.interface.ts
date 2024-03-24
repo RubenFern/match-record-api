@@ -26,3 +26,12 @@ export interface ErrorsSignUp
     ERROR_PASSWORD: string,
     ERROR_CONFIRMPASSWORD: string
 }
+
+export interface EmptyErrors
+{
+    name: string,
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}

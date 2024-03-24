@@ -5,30 +5,35 @@
         <mat-form-field>
             <mat-label for="name">Nombre</mat-label>
             <input type="text" id="name" matInput placeholder="Nombre" formControlName="name" required>
+            @if (errorEmptyName) { <mat-error>{{ emptyErrors['name'] }}</mat-error> }
         </mat-form-field>
 
         <mat-form-field>
             <mat-label for="username">Nombre de usuario</mat-label>
             <input type="text" id="username" matInput placeholder="Nombre de usuario" formControlName="username" required>
             @if (errorOnRegister === errorUsername) { <mat-error>{{ errorMessages.ERROR_USERNAME }}</mat-error> }
+            @if (errorEmptyUsername) { <mat-error>{{ emptyErrors['username'] }}</mat-error> }
         </mat-form-field>
 
         <mat-form-field>
             <mat-label for="email">Correo electrónico</mat-label>
             <input type="text" id="email" matInput placeholder="Correo electrónico" formControlName="email" required>
             @if (errorOnRegister === errorEmail) { <mat-error>{{ errorMessages.ERROR_EMAIL }}</mat-error> }
+            @if (errorEmptyEmail) { <mat-error>{{ emptyErrors['email'] }}</mat-error> }
         </mat-form-field>
 
         <mat-form-field>
             <mat-label for="password">Contraseña</mat-label>
             <input type="password" id="password" matInput placeholder="Contraseña" formControlName="password" required>
             @if (errorOnRegister === errorPassword) { <mat-error>{{ errorMessages.ERROR_PASSWORD }}</mat-error> }
+            @if (errorEmptyPassword) { <mat-error>{{ emptyErrors['password'] }}</mat-error> }
         </mat-form-field>
 
         <mat-form-field>
             <mat-label for="confirmPassword">Repite la contraseña</mat-label>
             <input type="password" id="confirmPassword" matInput placeholder="Repite la contraseña" formControlName="confirmPassword" required>
             @if (errorOnRegister === errorConfirmPassword) { <mat-error>{{ errorMessages.ERROR_CONFIRMPASSWORD }}</mat-error> }
+            @if (errorEmptyConfirmPassword) { <mat-error>{{ emptyErrors['confirmPassword'] }}</mat-error> }
         </mat-form-field>
 
         <button
