@@ -14,4 +14,9 @@ export class Encounter extends Model
         type: DataType.STRING(36)
     })
     id_tournament: string;
+
+    @Column({
+        type: DataType.DATE
+    })
+    date: Date
 }
