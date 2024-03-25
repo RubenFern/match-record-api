@@ -1,5 +1,7 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 const { v4: uuidv4 } = require('uuid');
+
+import { Player } from "./player.entity";
 
 @Table
 export class Team extends Model
@@ -33,4 +35,7 @@ export class Team extends Model
         defaultValue: () => new Date().getFullYear()    
     })
     foundationYear: number;
+
+    @HasMany(() => Player)
+    players: Player[];
 }
