@@ -6,7 +6,7 @@ import { UsersService } from 'src/users/users.service';
 import { SignUpDto } from './dto/signUp.dto';
 import { SignInDto } from './dto/signIn.dto';
 import { extractTokenFromHeader } from './helpers/extractTokenFromHeader';
-import { TokenService } from 'src/token/token.service';
+import { TokenService } from 'src/tokens/token.service';
 import { Request } from 'express';
 
 @Injectable()

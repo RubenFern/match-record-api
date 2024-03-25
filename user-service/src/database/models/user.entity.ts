@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, Length, AllowNull, Unique } from 'sequelize-typescript';
+import { Table, Column, Model, DataType } from 'sequelize-typescript';
 const { v4: uuidv4 } = require('uuid');
 
 @Table

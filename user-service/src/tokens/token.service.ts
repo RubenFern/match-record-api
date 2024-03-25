@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 
 import { TOKENS_REPOSITORY } from "src/constants";
-import { Token } from "./token.entity";
+import { Token } from "../database/models/token.entity";
 
 @Injectable()
 export class TokenService

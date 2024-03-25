@@ -1,14 +1,16 @@
 import { Sequelize } from 'sequelize-typescript';
 
-import { User } from 'src/database/models/user.entity';
-import { Token } from 'src/database/models/token.entity';
+import { Team } from './models/team.entity';
+import { Player } from './models/player.entity';
+import { Tournament } from './models/tournament.entity';
+import { Match } from './models/match.entity';
 
 export const databaseProviders = [
     {
         provide: 'SEQUELIZE',
         useFactory: async () => 
         {
-            const sequelize = new Sequelize('users-db', 'root', process.env.MARIADB_PASSWORD, { 
+            const sequelize = new Sequelize('bowling-db', 'root', process.env.MARIADB_PASSWORD, { 
                 dialect: 'mariadb',
                 host: process.env.MARIADB_HOST,
                 port: parseInt(process.env.MARIADB_PORT),
@@ -21,7 +23,7 @@ export const databaseProviders = [
                 console.error('Unable to connect to the database: ', error);
             }
 
-            sequelize.addModels([User, Token]);
+            sequelize.addModels([Team, Player, Tournament, Match]);
             await sequelize.sync();
 
             return sequelize;
