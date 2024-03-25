@@ -27,7 +27,7 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ### Database design
-![](docs/images/diagram.png) 
+![](docs/images/database_design.png) 
 
 ## Installation
 
