@@ -32,8 +32,10 @@ export class UsersService
 
         const userDto = new UserDto();
 
+        userDto.id = user.id;
         userDto.name = user.name;
         userDto.username = user.username;
+        userDto.password = user.password;
 
         return userDto;
     }
