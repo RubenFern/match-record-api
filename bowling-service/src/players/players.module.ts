@@ -20,6 +20,6 @@ import { playersProviders } from './players.providers';
         PlayersService,
         ...playersProviders
     ],
-    exports: []
+    exports: [PlayersService]
 })
 export class PlayersModule {}

@@ -30,6 +30,9 @@ export class UsersService
     {
         const user: User = await this.usersRepository.findOne({ where: { username: username } });
 
+        if (!user)
+            return undefined;
+
         const userDto = new UserDto();
 
         userDto.id = user.id;
