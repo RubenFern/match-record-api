@@ -14,6 +14,12 @@ export class Team extends Model
     id: string;
 
     @Column({
+        type: DataType.STRING(),
+        allowNull: false
+    })
+    owner: string;
+
+    @Column({
         type: DataType.STRING(80),
         allowNull: false,
         unique: true

@@ -12,7 +12,7 @@ export class PlayersController
     @UseGuards(AuthGuard)
     @HttpCode(HttpStatus.OK)
     @Post('create')
-    add(@Req() req: Request, @Res() res: Response)
+    create(@Req() req: Request, @Res() res: Response)
     {
         return this.playersService.create(req)
             .then(message => res.status(HttpStatus.CREATED).send(message))
