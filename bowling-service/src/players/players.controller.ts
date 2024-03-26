@@ -13,6 +13,8 @@ export class PlayersController
     @Post('create')
     add(@Body() createPlayerDto: CreatePlayerDto, @Res() res: Response)
     {
-        return res.status(HttpStatus.CREATED).send('hola mundo');
+        return this.playersService.create(createPlayerDto.username, createPlayerDto.name)
+            .then(message => res.status(HttpStatus.CREATED).send(message))
+            .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error))
     }
 }
