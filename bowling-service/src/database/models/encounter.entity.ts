@@ -24,6 +24,17 @@ export class Encounter extends Model
     tournament: Tournament
 
     @Column({
+        type: DataType.STRING(100),
+        allowNull: false
+    })
+    name: string;
+
+    @Column({
+        type: DataType.STRING()
+    })
+    description: string;
+
+    @Column({
         type: DataType.DATE
     })
     date: Date
