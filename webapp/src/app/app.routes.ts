@@ -4,6 +4,7 @@ import { LayoutComponent } from './auth/pages/layout/layout.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { Error404Component } from './shared/pages/error404/error404.component';
+import { HomeComponent } from './auth/pages/home/home.component';
 
 export const routes: Routes = [
     {
@@ -16,8 +17,15 @@ export const routes: Routes = [
             { path: 'register', component: RegisterComponent }
         ]
     },
+    {
+        path: '',
+        component: LayoutComponent,
+        canActivate: [],
+        children: [
+            { path: 'home', component: HomeComponent }
+        ]
+    },
     { path: '404', component: Error404Component },
 
-    { path: '', redirectTo: 'heroes', pathMatch: 'full' },
     { path: '**', redirectTo: '404' }
 ];
