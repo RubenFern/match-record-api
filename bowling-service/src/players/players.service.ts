@@ -2,6 +2,7 @@ import { BadRequestException, Inject, Injectable, UnauthorizedException } from '
 import { JwtService } from '@nestjs/jwt';
 import { HttpService } from '@nestjs/axios';
 import { Request } from 'express';
+import { catchError, lastValueFrom } from 'rxjs';
 
 import { PLAYERS_REPOSITORY } from 'src/constants';
 import { Player } from 'src/database/models/player.entity';
@@ -19,8 +20,7 @@ export class PlayersService
         private readonly httpService: HttpService
     ) {}
 
-    // TODO sobrecarga
-    async create(request: Request): Promise<{ message: string } | { error: string }>
+    async create(request: Request): Promise<{ message: string }>
     {
         const token = extractTokenFromHeader(request);
 
@@ -30,30 +30,24 @@ export class PlayersService
         const payload = await this.jwtService.verifyAsync(token, { secret: process.env.SECRET_KEY_TOKEN });
         
         try {
-            this.httpService.get<UserDto>(`${ environments.USERS_SERVICE }/users/${ payload.username }`)
-                .subscribe({
-                    next: async userDto => {
-                        if (!userDto)
-                            throw new BadRequestException('User does not exists');
+            const userDto = await lastValueFrom(this.httpService.get<UserDto>(`${ environments.USERS_SERVICE }/users/${ payload.username }`)
+                .pipe(
+                    catchError(error => {
+                        throw new BadRequestException(error);
+                    })
+                ));
 
-                        console.log(userDto);
-            
-                        const player = new Player();
+            const player = new Player();
                 
-                        player.name = userDto.data.name;
-                        player.username = userDto.data.username;
-            
-                        await player.save();
-                    },
-                    error: error => { 
-                        throw new BadRequestException(error) 
-                    } 
-                });
+            player.name = userDto.data.name;
+            player.username = userDto.data.username;
+
+            await player.save();
 
             return { message: 'The player has just been created' };
         }
         catch (error) {
-            return { error: error };
+            throw new BadRequestException(error);
         }
     }
 }

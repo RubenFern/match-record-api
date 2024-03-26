@@ -35,7 +35,8 @@ export class Player extends Model
 
     @Column({
         type: DataType.STRING(80),
-        allowNull: false
+        allowNull: false,
+        unique: true
     })
     username: string;
 

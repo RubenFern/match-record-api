@@ -10,8 +10,8 @@ export class UsersController
 
     @HttpCode(HttpStatus.OK)
     @Get(':username')
-    findOne(@Param('username') username: string, @Res() res: Response)
+    async findOne(@Param('username') username: string, @Res() res: Response)
     {
-        return res.status(HttpStatus.OK).send(this.usersService.findOne(username));
+        return res.status(HttpStatus.OK).send(await this.usersService.findOne(username));
     }
 }
