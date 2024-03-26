@@ -2,6 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 
 import { USERS_REPOSITORY } from "src/constants";
 import { User } from "../database/models/user.entity";
+import { UserDto } from "./dto/user.dto";
 
 @Injectable()
 export class UsersService
@@ -25,8 +26,15 @@ export class UsersService
         return userData;
     }
 
-    async findOne(username: string): Promise<User | undefined>
+    async findOne(username: string): Promise<UserDto | undefined>
     {
-        return await this.usersRepository.findOne({ where: { username: username } });
+        const user: User = await this.usersRepository.findOne({ where: { username: username } });
+
+        const userDto = new UserDto();
+
+        userDto.name = user.name;
+        userDto.username = user.username;
+
+        return userDto;
     }
 }

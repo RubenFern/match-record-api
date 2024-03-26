@@ -1,12 +1,12 @@
 import { IsNotEmpty, IsString } from "class-validator";
 
-export class CreatePlayerDto 
+export class UserDto
 {
     @IsString()
     @IsNotEmpty()
-    readonly username: string;
+    readonly name: string;
 
     @IsString()
     @IsNotEmpty()
-    readonly name: string;
+    readonly username: string;
 }

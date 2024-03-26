@@ -34,6 +34,12 @@ export class Player extends Model
     name: string;
 
     @Column({
+        type: DataType.STRING(80),
+        allowNull: false
+    })
+    username: string;
+
+    @Column({
         type: DataType.DATE,
         defaultValue: () => DataType.NOW    
     })
