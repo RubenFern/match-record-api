@@ -8,7 +8,7 @@ import { SignInDto } from './dto/signIn.dto';
 import { environments } from 'environments/environments';
 
 @Injectable()
-export class AuthService 
+export class AuthService
 {
     constructor(private readonly httpService: HttpService) {}
 
