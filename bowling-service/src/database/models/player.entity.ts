@@ -1,9 +1,8 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 const { v4: uuidv4 } = require('uuid');
 
 import { Team } from "./team.entity";
 import { Match } from "./match.entity";
-import { PlayerPlayMatch } from "./player_play_match.entity";
 
 @Table
 export class Player extends Model
@@ -24,9 +23,6 @@ export class Player extends Model
     @BelongsTo(() => Team)
     team: Team;
 
-    @BelongsToMany(() => Match, () => PlayerPlayMatch)
-    matchs: Match[];
-
     @Column({
         type: DataType.STRING(80),
         allowNull: false
@@ -45,4 +41,7 @@ export class Player extends Model
         defaultValue: () => DataType.NOW    
     })
     createdAt: Date;
+
+    @HasMany(() => Match)
+    matches: Match[];
 }

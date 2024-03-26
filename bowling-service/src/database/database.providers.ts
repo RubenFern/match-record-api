@@ -5,7 +5,6 @@ import { Player } from './models/player.entity';
 import { Tournament } from './models/tournament.entity';
 import { Match } from './models/match.entity';
 import { Encounter } from './models/encounter.entity';
-import { PlayerPlayMatch } from './models/player_play_match.entity';
 
 export const databaseProviders = [
     {
@@ -25,7 +24,7 @@ export const databaseProviders = [
                 console.error('Unable to connect to the database: ', error);
             }
 
-            sequelize.addModels([Team, Player, Encounter, Tournament, Match, PlayerPlayMatch]);
+            sequelize.addModels([Team, Player, Encounter, Tournament, Match]);
             await sequelize.sync();
 
             return sequelize;

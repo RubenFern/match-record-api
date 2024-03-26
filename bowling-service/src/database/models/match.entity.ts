@@ -1,8 +1,7 @@
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 const { v4: uuidv4 } = require('uuid');
 
 import { Player } from "./player.entity";
-import { PlayerPlayMatch } from "./player_play_match.entity";
 import { Encounter } from "./encounter.entity";
 
 @Table
@@ -24,8 +23,14 @@ export class Match extends Model
     @BelongsTo(() => Encounter)
     encounter: Encounter;
 
-    @BelongsToMany(() => Player, () => PlayerPlayMatch)
-    players: Player[];
+    @ForeignKey(() => Player)
+    @Column({
+        type: DataType.STRING(36)
+    })
+    playerId: string;
+
+    @BelongsTo(() => Player)
+    player: Player;
 
     @Column({
         type: DataType.INTEGER,
