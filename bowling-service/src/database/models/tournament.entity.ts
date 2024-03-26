@@ -14,6 +14,17 @@ export class Tournament extends Model
     id: string;
 
     @Column({
+        type: DataType.STRING(100),
+        allowNull: false
+    })
+    name: string;
+
+    @Column({
+        type: DataType.STRING()
+    })
+    description: string;
+
+    @Column({
         type: DataType.DATE
     })
     date: Date

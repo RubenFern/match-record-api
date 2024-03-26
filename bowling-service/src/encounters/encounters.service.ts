@@ -6,6 +6,7 @@ import { ENCOUNTERS_REPOSITORY } from 'src/constants';
 import { Encounter } from 'src/database/models/encounter.entity';
 import { extractTokenFromHeader } from 'src/helpers/extractTokenFromHeader';
 import { CreateEncounterDto } from './dto/createEncounter.dto';
+import { getCurrentDate } from 'src/helpers/getCurrentDate';
 
 @Injectable()
 export class EncountersService 
@@ -28,7 +29,7 @@ export class EncountersService
                 
             encounter.name = createEncounterDto.name;
             encounter.description = createEncounterDto.description;
-            encounter.date = this.getCurrentDate();
+            encounter.date = getCurrentDate();
             encounter.tournamentId = createEncounterDto.tournamentId;
 
             await encounter.save();
@@ -40,16 +41,5 @@ export class EncountersService
         }
     }
 
-    private getCurrentDate(): Date
-    {
-        const currentDate = new Date();
-
-        const day = currentDate.getDate();
-        const month = currentDate.getMonth() + 1;
-        const year = currentDate.getFullYear();
-
-        const formatDate = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
-
-        return new Date(formatDate);
-    }
+    
 }
