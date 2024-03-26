@@ -1,13 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { HttpModule } from '@nestjs/axios';
 
 import { PlayersService } from './players.service';
 import { PlayersController } from './players.controller';
 import { playersProviders } from './players.providers';
+import { TeamsModule } from 'src/teams/teams.module';
 
 @Module({
     imports: [
+        forwardRef(() => TeamsModule),
         JwtModule.register({
             global: true,
             secret: process.env.SECRET_KEY_TOKEN,

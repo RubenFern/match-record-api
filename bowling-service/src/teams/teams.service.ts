@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, UnauthorizedException, forwardRef } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 
@@ -7,6 +7,7 @@ import { Team } from 'src/database/models/team.entity';
 import { extractTokenFromHeader } from 'src/helpers/extractTokenFromHeader';
 import { CreateTeamDto } from './dto/createTeam.dto';
 import { PlayersService } from 'src/players/players.service';
+import { TeamDto } from './dto/team.dto';
 
 @Injectable()
 export class TeamsService 
@@ -15,6 +16,7 @@ export class TeamsService
         @Inject(TEAMS_REPOSITORY)
         private readonly teamsRepository: typeof Team,
         private readonly jwtService: JwtService,
+        @Inject(forwardRef(() => PlayersService))
         private readonly playersService: PlayersService
     ) {}
 
@@ -45,5 +47,24 @@ export class TeamsService
         catch (error) {
             throw new BadRequestException(error);
         }
+    }
+
+    async findByName(name: string): Promise<TeamDto | undefined>
+    {
+        const team: Team = await this.teamsRepository.findOne({ where: { name: name } });
+
+        if (!team)
+            return undefined;
+
+        const teamDto = new TeamDto();
+
+        teamDto.id = team.id;
+        teamDto.owner = team.owner;
+        teamDto.name = team.name;
+        teamDto.image = team.image;
+        teamDto.ubication = team.ubication;
+        teamDto.foundationYear = team.foundationYear;
+
+        return teamDto;
     }
 }

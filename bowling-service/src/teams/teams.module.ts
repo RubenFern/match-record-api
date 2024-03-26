@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 
 import { TeamsController } from './teams.controller';
@@ -8,7 +8,7 @@ import { PlayersModule } from 'src/players/players.module';
 
 @Module({
     imports: [
-        PlayersModule,
+        forwardRef(() => PlayersModule),
         JwtModule.register({
             global: true,
             secret: process.env.SECRET_KEY_TOKEN,
@@ -21,6 +21,6 @@ import { PlayersModule } from 'src/players/players.module';
         TeamsService,
         ...teamsProviders
     ],
-    exports: []
+    exports: [TeamsService]
 })
 export class TeamsModule {}
