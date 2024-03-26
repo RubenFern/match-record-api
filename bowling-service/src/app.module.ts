@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { EncountersModule } from './encounters/encounters.module';
-import { MatchsModule } from './matchs/matchs.module';
+import { MatchsModule } from './matches/matches.module';
 import { PlayersModule } from './players/players.module';
 import { TeamsModule } from './teams/teams.module';
 import { TournamentsModule } from './tournaments/tournaments.module';

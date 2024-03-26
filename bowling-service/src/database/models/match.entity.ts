@@ -25,7 +25,8 @@ export class Match extends Model
 
     @ForeignKey(() => Player)
     @Column({
-        type: DataType.STRING(36)
+        type: DataType.STRING(36),
+        allowNull: false
     })
     playerId: string;
 
