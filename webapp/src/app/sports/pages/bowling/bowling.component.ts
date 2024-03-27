@@ -4,11 +4,13 @@ import { BowlingService } from '../../services/bowling/bowling.service';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LayoutComponent } from '../../../shared/layouts/sports/bowling/layout/layout.component';
 
 @Component({
     selector: 'app-bowling',
     standalone: true,
     imports: [
+        LayoutComponent,
         HomeComponent,
         WelcomeComponent,
         MatProgressSpinnerModule

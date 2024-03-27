@@ -1,13 +1,18 @@
-<div class="grid md:mt-10 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    @for (sport of sports; track $index)
-    {
-        <div>
-            <a class="text-white" [routerLink]="['/app/sport/' + sport.name.toLowerCase()]">
-                <div class="flex flex-col justify-center">
-                    <span [innerHTML]="sport.icon" style='font-size:100px;'></span>
-                    <span class="text-center text-2xl">{{ sport.name }}</span>
+<div class="grid h-screen">
+    <div class="col-12">
+        <app-layout-home />
+        <div class="grid md:mt-10 justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            @for (sport of sports; track $index)
+            {
+                <div>
+                    <a class="text-white" [routerLink]="['/sports/' + sport.name.toLowerCase()]">
+                        <div class="flex flex-col justify-center">
+                            <span [innerHTML]="sport.icon" style='font-size:100px;'></span>
+                            <span class="text-center text-2xl">{{ sport.name }}</span>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            }
         </div>
-    }
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent as AuthLayout } from './shared/layouts/auth/layout/layout.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { Error404Component } from './shared/pages/error404/error404.component';
@@ -10,7 +10,7 @@ import { BowlingComponent } from './sports/pages/bowling/bowling.component';
 export const routes: Routes = [
     {
         path: 'auth',
-        component: LayoutComponent,
+        component: AuthLayout,
         canActivate: [],
         children: [
             { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,17 +20,16 @@ export const routes: Routes = [
     },
     {
         path: 'app',
-        component: LayoutComponent,
         canActivate: [],
         children: [
             { path: 'home', component: HomeComponent },
-            {
-                path: 'sport',
-                canActivate: [],
-                children: [
-                    { path: 'bowling', component: BowlingComponent }
-                ]
-            }
+        ]
+    },
+    {
+        path: 'sports',
+        canActivate: [],
+        children: [
+            { path: 'bowling', component: BowlingComponent }
         ]
     },
     { path: '404', component: Error404Component },

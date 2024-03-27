@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
-
-import { MaterialModules } from "../../../../material/material.modules";
 import { RouterModule } from "@angular/router";
 
+import { MaterialModules } from "../../../../../../../material/material.modules";
+
 @Component({
-    selector: 'app-navbar',
+    selector: 'app-navbar-bowling',
     standalone: true,
     imports: [
         ...MaterialModules,
