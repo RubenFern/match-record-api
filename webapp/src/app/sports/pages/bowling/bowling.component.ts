@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 
-import { CreatePlayerBowlingComponent } from '../../dialogs/create-player-bowling/create-player-bowling.component';
 import { BowlingService } from '../../services/bowling/bowling.service';
-import { MatButtonModule } from '@angular/material/button';
+import { HomeComponent } from './home/home.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
     selector: 'app-bowling',
     standalone: true,
     imports: [
-        MatButtonModule
+        HomeComponent,
+        WelcomeComponent
     ],
     templateUrl: './bowling.component.html',
     styles: ``
@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 export class BowlingComponent implements OnInit
 {
     constructor(
-        private dialog: MatDialog,
         private bowlingService: BowlingService
     ) {}
 
@@ -26,16 +25,5 @@ export class BowlingComponent implements OnInit
     ngOnInit(): void
     {
         this.bowlingService.isUserPlayer().subscribe(exists => this.showPage = exists );
-    }
-
-    openDialog(): void
-    {
-        const dialogRef = this.dialog.open(CreatePlayerBowlingComponent);
-
-        dialogRef.afterClosed().subscribe(result =>
-            {
-                if (result)
-                    this.bowlingService.createPlayer();
-            });
     }
 }

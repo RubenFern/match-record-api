@@ -1,7 +1,6 @@
 @if (showPage) {
-    <p class="text-white">bowling works!</p>
+    <app-bowling-home />
 }
 @else {
-    <p class="text-white">Podrás manejar tus resultados de bowling</p>
-    <button mat-flat-button color="primary" (click)="openDialog()">Crear perfil de jugador</button>
+    <app-bowling-welcome />
 }
