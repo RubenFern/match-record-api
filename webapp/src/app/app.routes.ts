@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { LayoutComponent } from './auth/pages/layout/layout.component';
+import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { Error404Component } from './shared/pages/error404/error404.component';
-import { HomeComponent } from './auth/pages/home/home.component';
+import { HomeComponent } from './home/pages/home.component';
 
 export const routes: Routes = [
     {
@@ -18,7 +18,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: '',
+        path: 'app',
         component: LayoutComponent,
         canActivate: [],
         children: [
@@ -26,6 +26,6 @@ export const routes: Routes = [
         ]
     },
     { path: '404', component: Error404Component },
-
+    { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
     { path: '**', redirectTo: '404' }
 ];

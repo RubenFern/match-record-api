@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { sports } from './sports';
-import { Sport } from '../../interfaces/sport.interface';
+import { sports } from '../sports';
+import { Sport } from '../interfaces/sport.interface';
 
 @Component({
   selector: 'app-home',

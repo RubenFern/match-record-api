@@ -1,4 +1,4 @@
-import { Sport } from "../../interfaces/sport.interface";
+import { Sport } from "./interfaces/sport.interface";
 
 export const sports: Sport[] = [
     { icon: '&#9917;', name: 'Football' },
