@@ -10,6 +10,7 @@ import { extractTokenFromHeader } from 'src/helpers/extractTokenFromHeader';
 import { environments } from 'environments/environments';
 import { UserDto } from './dto/user.dto';
 import { TeamsService } from 'src/teams/teams.service';
+import { PlayerDto } from './dto/player.dto';
 
 @Injectable()
 export class PlayersService 
@@ -50,6 +51,39 @@ export class PlayersService
             return { message: 'The player has just been created' };
         }
         catch (error) {
+            throw new BadRequestException(error);
+        }
+    }
+
+    async getPlayer(request: Request): Promise<PlayerDto | undefined>
+    {
+        const token = extractTokenFromHeader(request);
+
+        if (!token)
+            throw new UnauthorizedException();
+
+        const payload = await this.jwtService.verifyAsync(token, { secret: process.env.SECRET_KEY_TOKEN });
+
+        try {
+            const player = await this.playersRepository.findOne({ where: { username: payload.username } });
+
+            if (!player)
+                return undefined;
+
+            const playerDto = new PlayerDto();
+
+            playerDto.id = player.id;
+            playerDto.name = player.name;
+            playerDto.username = player.username;
+            playerDto.teamId = player.teamId;
+            playerDto.createdAt = player.createdAt;
+
+            console.log(playerDto);
+
+            return playerDto;
+        }
+        catch (error)
+        {
             throw new BadRequestException(error);
         }
     }

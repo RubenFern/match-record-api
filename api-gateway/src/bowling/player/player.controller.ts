@@ -1,10 +1,10 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 import { PlayerService } from './player.service';
 import { AddToTeamDto } from './dto/add-to-team.dto';
 
-@Controller('api/bowling/player')
+@Controller('api/bowling/players')
 export class PlayerController 
 {
     constructor(private readonly playerService: PlayerService) {}
@@ -32,6 +32,24 @@ export class PlayerController
     addPlayerToTeam(@Req() req: Request, @Res() res: Response, @Body() addToTeamDto: AddToTeamDto)
     {
         return this.playerService.addPlayerToTeam(req, addToTeamDto)
+            .subscribe({
+                next: result => res.status(HttpStatus.OK).send(result.data),
+                error: error => {
+                    if (error.response.data.message[0].message)
+                        res.status(HttpStatus.BAD_REQUEST).send({ error: error.response.data.message[0].message })
+                    else if (error.response.data.message)
+                        res.status(HttpStatus.BAD_REQUEST).send({ error: error.response.data.message })
+                    else 
+                        res.status(HttpStatus.BAD_REQUEST).send(error) 
+                }
+            });
+    }
+
+    @HttpCode(HttpStatus.OK)
+    @Get('player')
+    getPlayer(@Req() req: Request, @Res() res: Response)
+    {
+        return this.playerService.getPlayer(req)
             .subscribe({
                 next: result => res.status(HttpStatus.OK).send(result.data),
                 error: error => {

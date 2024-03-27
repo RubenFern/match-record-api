@@ -1,33 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { isUserPlayerOfSport } from '../../helpers/validators';
 import { CreatePlayerBowlingComponent } from '../../dialogs/create-player-bowling/create-player-bowling.component';
+import { BowlingService } from '../../services/bowling/bowling.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-bowling',
-  standalone: true,
-  imports: [],
-  templateUrl: './bowling.component.html',
-  styles: ``
+    selector: 'app-bowling',
+    standalone: true,
+    imports: [
+        MatButtonModule
+    ],
+    templateUrl: './bowling.component.html',
+    styles: ``
 })
 export class BowlingComponent implements OnInit
 {
-    constructor(private dialog: MatDialog) {}
+    constructor(
+        private dialog: MatDialog,
+        private bowlingService: BowlingService
+    ) {}
+
+    public showPage = false;
 
     ngOnInit(): void
     {
-        if (!isUserPlayerOfSport("bowling"))
-            this.openDialog();
+        this.bowlingService.isUserPlayer().subscribe(exists => this.showPage = exists );
     }
 
-    private openDialog(): void
+    openDialog(): void
     {
         const dialogRef = this.dialog.open(CreatePlayerBowlingComponent);
 
         dialogRef.afterClosed().subscribe(result =>
             {
-                console.log({ result });
+                if (result)
+                    this.bowlingService.createPlayer();
             });
     }
 }
