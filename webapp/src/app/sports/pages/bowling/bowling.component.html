@@ -1,6 +1,12 @@
-@if (showPage) {
-    <app-bowling-home />
+@if (isLoading) {
+    <mat-spinner></mat-spinner>
 }
 @else {
-    <app-bowling-welcome />
+    @if (showPage) {
+        <app-bowling-home />
+    }
+    @else {
+        <app-bowling-welcome />
+    }
 }
+

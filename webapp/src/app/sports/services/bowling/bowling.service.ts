@@ -27,7 +27,10 @@ export class BowlingService
 
     public createPlayer(): Observable<boolean>
     {
-        console.log("lo creamos");
-        return of(true);
+        return this.http.post(`${ environments.API_GATEWAY }/bowling/players/create`, {}, { headers: this.headers })
+            .pipe(
+                catchError( () => of(false) ),
+                map(value => !!value )
+            );
     }
 }

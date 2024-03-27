@@ -78,8 +78,6 @@ export class PlayersService
             playerDto.teamId = player.teamId;
             playerDto.createdAt = player.createdAt;
 
-            console.log(playerDto);
-
             return playerDto;
         }
         catch (error)
