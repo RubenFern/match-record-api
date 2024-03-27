@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import { MaterialModules } from "../../../../../../../material/material.modules";
+import { Messages } from "../../../../../../../lang/interfaces/messages.interface";
+import { messagesApp } from "../../../../../../../lang/messages_es";
 
 @Component({
     selector: 'app-navbar-bowling',
@@ -15,6 +17,7 @@ import { MaterialModules } from "../../../../../../../material/material.modules"
 })
 export class NavbarComponent
 {
+    public messages: Messages = messagesApp;
 
     public showMenu(): void
     {

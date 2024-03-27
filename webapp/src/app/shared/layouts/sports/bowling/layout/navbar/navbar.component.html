@@ -66,25 +66,31 @@
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a
-                            href="#"
+                            [routerLink]="['/app/home']"
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page"
-                            >Dashboard</a
+                            >{{ messages.navbarHome }}</a
                         >
                         <a
-                            href="#"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                            >Team</a
+                            [routerLink]="['/sports/bowling/team']"
+                            class="text-white rounded-md px-3 py-2 text-sm font-medium"
+                            aria-current="page"
+                            >{{ messages.navbarMyTeam }}</a
                         >
                         <a
-                            href="#"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                            >Projects</a
+                            [routerLink]="['/sports/bowling/matchs']"
+                            class="text-white rounded-md px-3 py-2 text-sm font-medium"
+                            >{{ messages.navbarMatchs }}</a
                         >
                         <a
-                            href="#"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                            >Calendar</a
+                            [routerLink]="['/sports/bowling/encounters']"
+                            class="text-white rounded-md px-3 py-2 text-sm font-medium"
+                            >{{ messages.navbarEncounters }}</a
+                        >
+                        <a
+                            [routerLink]="['/sports/bowling/tournaments']"
+                            class="text-white rounded-md px-3 py-2 text-sm font-medium"
+                            >{{ messages.navbarTournaments }}</a
                         >
                     </div>
                 </div>
@@ -155,28 +161,12 @@
                     >
                         <!-- Active: "bg-gray-100", Not Active: "" -->
                         <a
-                            href="#"
-                            class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem"
-                            tabindex="-1"
-                            id="user-menu-item-0"
-                            >Your Profile</a
-                        >
-                        <a
-                            href="#"
-                            class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem"
-                            tabindex="-1"
-                            id="user-menu-item-1"
-                            >Settings</a
-                        >
-                        <a
-                            href="#"
+                            [routerLink]="['/auth/logout']"
                             class="block px-4 py-2 text-sm text-gray-700"
                             role="menuitem"
                             tabindex="-1"
                             id="user-menu-item-2"
-                            >Sign out</a
+                            >{{ messages.navbarLogout }}</a
                         >
                     </div>
                 </div>
@@ -189,25 +179,31 @@
         <div class="space-y-1 px-2 pb-3 pt-2">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a
-                href="#"
+                [routerLink]="['/app/home']"
                 class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                 aria-current="page"
-                >Dashboard</a
+                >{{ messages.navbarHome }}</a
             >
             <a
-                href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-                >Team</a
+                [routerLink]="['/sports/bowling/team']"
+                class="text-white block rounded-md px-3 py-2 text-base font-medium"
+                aria-current="page"
+                >{{ messages.navbarMyTeam }}</a
             >
             <a
-                href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-                >Projects</a
+                [routerLink]="['/sports/bowling/matchs']"
+                class="text-white block rounded-md px-3 py-2 text-base font-medium"
+                >{{ messages.navbarMatchs }}</a
             >
             <a
-                href="#"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-                >Calendar</a
+                [routerLink]="['/sports/bowling/encounters']"
+                class="text-white block rounded-md px-3 py-2 text-base font-medium"
+                >{{ messages.navbarEncounters }}</a
+            >
+            <a
+                [routerLink]="['/sports/bowling/tournaments']"
+                class="text-white block rounded-md px-3 py-2 text-base font-medium"
+                >{{ messages.navbarTournaments }}</a
             >
         </div>
     </div>
