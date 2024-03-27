@@ -1,3 +1,5 @@
+import { Messages } from "./interfaces/messages.interface";
+
 export const errorsSignUp = {
     'ERROR_USERNAME': 'Este nombre de usuario no está disponible',
     'ERROR_EMAIL': 'Esta dirección de correo ya existe',
@@ -21,4 +23,11 @@ export const emptyErrorsSignUp = {
 export const emptyErrorsSignIn = {
     'username': 'Debes especificar tu nombre de usuario',
     'password': 'Debes especificar tu contraseña'
+}
+
+export const messagesApp: Messages = {
+    'createPlayerBowlingQuestion': '¿Quieres crear un perfil de jugador de Bowling?',
+    'createPlayerBowlingInfo': 'No estás registrado como jugador de Bowling en la aplicación',
+    'createPlayerBowlingBack': 'Volver',
+    'createPlayerBowlingCreate': 'Crear',
 }

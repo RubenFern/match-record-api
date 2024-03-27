@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { Error404Component } from './shared/pages/error404/error404.component';
 import { HomeComponent } from './home/pages/home.component';
+import { BowlingComponent } from './sports/pages/bowling/bowling.component';
 
 export const routes: Routes = [
     {
@@ -22,7 +23,14 @@ export const routes: Routes = [
         component: LayoutComponent,
         canActivate: [],
         children: [
-            { path: 'home', component: HomeComponent }
+            { path: 'home', component: HomeComponent },
+            {
+                path: 'sport',
+                canActivate: [],
+                children: [
+                    { path: 'bowling', component: BowlingComponent }
+                ]
+            }
         ]
     },
     { path: '404', component: Error404Component },
