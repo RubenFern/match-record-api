@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
-import { Player } from './interfaces';
+import { Player, Team } from './interfaces';
 import { environments } from '../../../../environments/environments';
 
 @Injectable({
@@ -31,6 +31,14 @@ export class BowlingService
             .pipe(
                 catchError( () => of(false) ),
                 map(value => !!value )
+            );
+    }
+
+    public getTeam(): Observable<Team | undefined>
+    {
+        return this.http.get<Team>(`${ environments.API_GATEWAY }/bowling/teams/team`, { headers: this.headers })
+            .pipe(
+                catchError( () => of(undefined) )
             );
     }
 }

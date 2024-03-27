@@ -29,7 +29,8 @@ export class BowlingComponent implements OnInit
 
     ngOnInit(): void
     {
-        this.bowlingService.isUserPlayer().subscribe(exists => {
+        this.bowlingService.isUserPlayer().subscribe(exists =>
+        {
             this.showPage = exists;
             this.isLoading = false;
         });
