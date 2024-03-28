@@ -7,7 +7,7 @@ import { Error404Component } from './shared/pages/error404/error404.component';
 import { HomeComponent } from './home/pages/home.component';
 import { BowlingComponent } from './sports/pages/bowling/bowling.component';
 import { MyTeamComponent } from './sports/pages/bowling/home/my-team/my-team.component';
-import { LayoutComponent as LayoutBowlingComponent } from './shared/layouts/sports/bowling/layout/layout.component';
+import { LayoutComponent as BowlingLayout } from './shared/layouts/sports/bowling/layout/layout.component';
 
 export const routes: Routes = [
     {
@@ -27,7 +27,7 @@ export const routes: Routes = [
         children: [
             {
                 path: 'bowling',
-                component: LayoutBowlingComponent,
+                component: BowlingLayout,
                 children: [
                     { path: '', component: BowlingComponent },
                     { path: 'my-team', component: MyTeamComponent }

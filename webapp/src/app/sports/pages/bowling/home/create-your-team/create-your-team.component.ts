@@ -52,7 +52,7 @@ export class CreateYourTeamComponent
             this.currentCreateTeam.foundationYear
         ).subscribe(result => {
             if (result)
-                this.router.navigate(['/app/home']);
+                this.router.navigate(['/sports/bowling']);
         });
     }
 

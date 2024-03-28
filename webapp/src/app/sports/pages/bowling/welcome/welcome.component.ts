@@ -32,7 +32,7 @@ export class WelcomeComponent
                 if (result)
                 {
                     await this.bowlingService.createPlayer().subscribe();
-                    this.router.navigate(['/app/home']);
+                    this.router.navigate(['/home']);
                 }
             });
     }
