@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { BowlingService } from '../../../services/bowling/bowling.service';
 import { MyTeamComponent } from './my-team/my-team.component';
+import { CreateYourTeamComponent } from './create-your-team/create-your-team.component';
 
 @Component({
     selector: 'app-bowling-home',
     standalone: true,
     imports: [
-        MyTeamComponent
+        MyTeamComponent,
+        CreateYourTeamComponent,
+        MatProgressSpinnerModule
     ],
     templateUrl: './home.component.html',
     styles: ``

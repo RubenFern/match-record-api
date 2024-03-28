@@ -4,6 +4,7 @@ export interface Messages
     createPlayerBowlingInfo: string,
     createPlayerBowlingBack: string,
     createPlayerBowlingCreate: string,
+
     navbarHome: string,
     navbarLogin: string,
     navbarRegister: string,
@@ -11,5 +12,12 @@ export interface Messages
     navbarMyTeam: string,
     navbarMatchs: string,
     navbarEncounters: string,
-    navbarTournaments: string
+    navbarTournaments: string,
+
+    formCreateTeamTitle: string;
+    formCreateTeamName: string;
+    formCreateTeamImage: string;
+    formCreateTeamUbication: string;
+    formCreateTeamFoundationYear: string;
+    formCreateTeamTitleCreate: string;
 }

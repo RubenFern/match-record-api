@@ -16,3 +16,11 @@ export interface Team
     ubication: string;
     foundationYear: string;
 }
+
+export interface File
+{
+    lastModified: number;
+    size: number;
+    name: string;
+    type: string;
+}

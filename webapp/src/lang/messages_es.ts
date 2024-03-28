@@ -30,6 +30,7 @@ export const messagesApp: Messages = {
     'createPlayerBowlingInfo': 'No estás registrado como jugador de Bowling en la aplicación',
     'createPlayerBowlingBack': 'Volver',
     'createPlayerBowlingCreate': 'Crear',
+
     'navbarHome': 'Inicio',
     'navbarLogin': 'Iniciar sesión',
     'navbarRegister': 'Crear cuenta',
@@ -37,5 +38,12 @@ export const messagesApp: Messages = {
     'navbarMyTeam': 'Mi Equipo',
     'navbarMatchs': 'Partidos',
     'navbarEncounters': 'Encuentros',
-    'navbarTournaments': 'Torneos'
+    'navbarTournaments': 'Torneos',
+
+    'formCreateTeamTitle': 'Crea tu equipo',
+    'formCreateTeamName': 'Nombre',
+    'formCreateTeamImage': 'Seleccionar Imagen',
+    'formCreateTeamUbication': 'Ubicación',
+    'formCreateTeamFoundationYear': 'Año de fundación',
+    'formCreateTeamTitleCreate': 'Crear',
 }

@@ -1,7 +1,11 @@
-@if (playerHasTeam) {
-    <app-bowling-home-myTeam />
+@if (isLoading) {
+    <mat-spinner></mat-spinner>
 }
 @else {
-    <p class="text-white">Crea tu propio equipo</p>
+    @if (playerHasTeam) {
+        <app-bowling-home-myTeam />
+    }
+    @else {
+        <app-bowling-home-createYourTeam />
+    }
 }
-
