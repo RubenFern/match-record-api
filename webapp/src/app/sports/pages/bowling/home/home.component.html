@@ -1,11 +1,2 @@
-@if (isLoading) {
-    <mat-spinner></mat-spinner>
-}
-@else {
-    @if (playerHasTeam) {
-        <app-bowling-home-myTeam />
-    }
-    @else {
-        <app-bowling-home-createYourTeam />
-    }
-}
+<p class="text-white">Este es el home de bowling. Botón para ir a mi equipo. Crear partidos. etc</p>
+<button mat-flat-button color="primary" [routerLink]="['my-team']">Crear equipo</button>

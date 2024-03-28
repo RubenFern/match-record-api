@@ -6,6 +6,8 @@ import { RegisterComponent } from './auth/pages/register/register.component';
 import { Error404Component } from './shared/pages/error404/error404.component';
 import { HomeComponent } from './home/pages/home.component';
 import { BowlingComponent } from './sports/pages/bowling/bowling.component';
+import { MyTeamComponent } from './sports/pages/bowling/home/my-team/my-team.component';
+import { LayoutComponent as LayoutBowlingComponent } from './shared/layouts/sports/bowling/layout/layout.component';
 
 export const routes: Routes = [
     {
@@ -18,18 +20,20 @@ export const routes: Routes = [
             { path: 'register', component: RegisterComponent }
         ]
     },
-    {
-        path: 'app',
-        canActivate: [],
-        children: [
-            { path: 'home', component: HomeComponent },
-        ]
-    },
+    { path: 'home', canActivate: [], component: HomeComponent },
     {
         path: 'sports',
         canActivate: [],
         children: [
-            { path: 'bowling', component: BowlingComponent }
+            {
+                path: 'bowling',
+                component: LayoutBowlingComponent,
+                children: [
+                    { path: '', component: BowlingComponent },
+                    { path: 'my-team', component: MyTeamComponent }
+                ]
+            },
+            { path: '', redirectTo: '/home', pathMatch: 'full' }
         ]
     },
     { path: '404', component: Error404Component },

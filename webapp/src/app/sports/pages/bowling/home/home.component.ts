@@ -1,36 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-import { BowlingService } from '../../../services/bowling/bowling.service';
-import { MyTeamComponent } from './my-team/my-team.component';
-import { CreateYourTeamComponent } from './create-your-team/create-your-team.component';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { MaterialModules } from '../../../../../material/material.modules';
 
 @Component({
     selector: 'app-bowling-home',
     standalone: true,
     imports: [
-        MyTeamComponent,
-        CreateYourTeamComponent,
-        MatProgressSpinnerModule
+        ...MaterialModules,
+        RouterModule
     ],
     templateUrl: './home.component.html',
     styles: ``
 })
-export class HomeComponent implements OnInit
+export class HomeComponent
 {
-    constructor(
-        private bowlingService: BowlingService
-    ) {}
 
-    public playerHasTeam: boolean = false;
-    public isLoading = true;
-
-    ngOnInit(): void
-    {
-        this.bowlingService.getTeam().subscribe(team =>
-        {
-            this.playerHasTeam = !!team;
-            this.isLoading = false;
-        });
-    }
 }

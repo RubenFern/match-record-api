@@ -69,13 +69,17 @@
                             [routerLink]="['/auth/login']"
                             class="text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page"
-                            >{{ messages.navbarLogin }}</a
                         >
+                            <mat-icon class="align-middle">login</mat-icon>
+                            <span class="align-middle"> {{ messages.navbarLogin }}</span>
+                        </a>
                         <a
                             [routerLink]="['/auth/register']"
                             class="text-white rounded-md px-3 py-2 text-sm font-medium"
-                            >{{ messages.navbarRegister }}</a
                         >
+                            <mat-icon class="align-middle">person_add</mat-icon>
+                            <span class="align-middle"> {{ messages.navbarRegister }}</span>
+                        </a>
                     </div>
                 </div>
             </div>

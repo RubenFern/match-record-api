@@ -1,1 +1,11 @@
-<p class="text-white">Aquí va la información de tu equipo</p>
+@if (isLoading) {
+    <mat-spinner></mat-spinner>
+}
+@else {
+    @if (playerHasTeam) {
+        <p class="text-white">Aquí va la información de tu equipo</p>
+    }
+    @else {
+        <app-bowling-home-createYourTeam />
+    }
+}

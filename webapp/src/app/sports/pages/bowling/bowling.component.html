@@ -1,16 +1,11 @@
-<div class="grid h-screen">
-    <div class="col-12">
-        <app-layout-bowling />
-        @if (isLoading) {
-            <mat-spinner></mat-spinner>
-        }
-        @else {
-            @if (showPage) {
-                <app-bowling-home />
-            }
-            @else {
-                <app-bowling-welcome />
-            }
-        }
-    </div>
-</div>
+@if (isLoading) {
+    <mat-spinner></mat-spinner>
+}
+@else {
+    @if (showPage) {
+        <app-bowling-home />
+    }
+    @else {
+        <app-bowling-welcome />
+    }
+}

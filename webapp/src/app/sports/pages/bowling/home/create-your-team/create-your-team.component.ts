@@ -5,7 +5,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModules } from '../../../../../../material/material.modules';
 import { Messages } from '../../../../../../lang/interfaces/messages.interface';
 import { messagesApp } from '../../../../../../lang/messages_es';
-import { File } from '../../../../services/bowling/interfaces';
+import { CreateTeam, File } from '../../../../services/bowling/interfaces';
+import { BowlingService } from '../../../../services/bowling/bowling.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-bowling-home-createYourTeam',
@@ -20,6 +22,11 @@ import { File } from '../../../../services/bowling/interfaces';
 })
 export class CreateYourTeamComponent
 {
+    constructor(
+        private bowlingService: BowlingService,
+        private router: Router
+    ) {}
+
     public messages: Messages = messagesApp;
     public file: File = { name: '', type: '', size: 0, lastModified: 0 };
     public previewImage: string = '';
@@ -31,9 +38,22 @@ export class CreateYourTeamComponent
         foundationYear:     new FormControl<number>(new Date().getFullYear())
     });
 
+    get currentCreateTeam(): CreateTeam
+    {
+        return this.createTeamForm.value as CreateTeam;
+    }
+
     onCreateTeam(): void
     {
-
+        this.bowlingService.createTeam(
+            this.currentCreateTeam.name,
+            this.currentCreateTeam.ubication,
+            this.file.name,
+            this.currentCreateTeam.foundationYear
+        ).subscribe(result => {
+            if (result)
+                this.router.navigate(['/app/home']);
+        });
     }
 
     onFileSelected(event: any): void

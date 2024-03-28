@@ -14,7 +14,15 @@ export interface Team
     name: string;
     image: string;
     ubication: string;
-    foundationYear: string;
+    foundationYear: number;
+}
+
+export interface CreateTeam
+{
+    name: string;
+    image: string;
+    ubication: string;
+    foundationYear: number;
 }
 
 export interface File

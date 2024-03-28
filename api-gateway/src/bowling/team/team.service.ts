@@ -13,6 +13,13 @@ export class TeamService
 {
     constructor(private readonly httpService: HttpService) {}
 
+    create(request: Request, teamDto: TeamDto): Observable<AxiosResponse<{ message: string }>>
+    {
+        const config = getConfigAuthorization(request);
+
+        return this.httpService.post(`${ environments.BOWLING_SERVICE }/api/teams/create`, teamDto, config);
+    }
+
     getTeam(request: Request): Observable<AxiosResponse<TeamDto>>
     {
         const config = getConfigAuthorization(request);
