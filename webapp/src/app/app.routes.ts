@@ -8,6 +8,7 @@ import { HomeComponent } from './home/pages/home.component';
 import { BowlingComponent } from './sports/pages/bowling/bowling.component';
 import { MyTeamComponent } from './sports/pages/bowling/home/my-team/my-team.component';
 import { LayoutComponent as BowlingLayout } from './shared/layouts/sports/bowling/layout/layout.component';
+import { AddComponent } from './sports/pages/bowling/home/add/add.component';
 
 export const routes: Routes = [
     {
@@ -30,7 +31,8 @@ export const routes: Routes = [
                 component: BowlingLayout,
                 children: [
                     { path: '', component: BowlingComponent },
-                    { path: 'my-team', component: MyTeamComponent }
+                    { path: 'my-team', component: MyTeamComponent },
+                    { path: 'add', component: AddComponent }
                 ]
             },
             { path: '', redirectTo: '/home', pathMatch: 'full' }

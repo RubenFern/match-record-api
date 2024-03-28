@@ -46,4 +46,9 @@ export const messagesApp: Messages = {
     'formCreateTeamUbication': 'Ubicación',
     'formCreateTeamFoundationYear': 'Año de fundación',
     'formCreateTeamTitleCreate': 'Crear',
+
+    'selectBowlingAddTitle': 'Selecciona una opción',
+    'selectBowlingAddMatch': 'Partido',
+    'selectBowlingAddEncounter': 'Encuentro',
+    'selectBowlingAddTournament': 'Torneo',
 }

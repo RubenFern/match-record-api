@@ -96,8 +96,6 @@ export class TeamsService
             teamDto.ubication = team.ubication;
             teamDto.foundationYear = team.foundationYear;
 
-            console.log(teamDto);
-
             return teamDto;
         }
         catch (error) {

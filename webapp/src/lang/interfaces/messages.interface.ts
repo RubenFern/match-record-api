@@ -20,4 +20,9 @@ export interface Messages
     formCreateTeamUbication: string;
     formCreateTeamFoundationYear: string;
     formCreateTeamTitleCreate: string;
+
+    selectBowlingAddTitle: string;
+    selectBowlingAddMatch: string;
+    selectBowlingAddEncounter: string;
+    selectBowlingAddTournament: string;
 }

@@ -15,7 +15,6 @@ export class TeamController
     @Post('create')
     create(@Req() req: Request, @Res() res: Response, @Body() teamDto: TeamDto)
     {
-        console.log(teamDto);
         this.teamService.create(req, teamDto)
             .subscribe({
                 next: result => res.status(HttpStatus.OK).send(result.data),
