@@ -5,6 +5,7 @@ import { MaterialModules } from '../../../../../../../material/material.modules'
 import { CreateMatch } from '../../../../../services/bowling/interfaces';
 import { Messages } from '../../../../../../../lang/interfaces/messages.interface';
 import { messagesApp } from '../../../../../../../lang/messages_es';
+import { BowlingService } from '../../../../../services/bowling/bowling.service';
 
 @Component({
     selector: 'app-bowling-add-match',
@@ -22,6 +23,10 @@ export class AddMatchComponent implements OnInit
     public matchForm = new FormGroup({});
     public messages: Messages = messagesApp;
 
+    constructor(
+        private readonly bowlingService: BowlingService
+    ) {}
+
     ngOnInit(): void
     {
         for (let i = 1; i <= this.numThrows; i++)
@@ -35,6 +40,6 @@ export class AddMatchComponent implements OnInit
 
     onCreate(): void
     {
-console.log(this.currentCreateMatch);
+
     }
 }

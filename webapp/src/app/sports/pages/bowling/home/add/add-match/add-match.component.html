@@ -1,24 +1,27 @@
-<div class="h-5/6 grid content-center" id="form">
+<div class="grid content-center" id="form">
     <form [formGroup]="matchForm" class="flex flex-col content-center mx-auto w-full p-5 lg:p-0 lg:w-5/12">
-        <h1 class="text-4xl text-center mb-4 text-dark dark:text-white">{{ messages.formAddMatchTitle }}</h1>
+        <h1 class="text-4xl mb-4 text-center text-dark dark:text-white">{{ messages.formAddMatchTitle }}</h1>
 
-        @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
-            <mat-form-field>
-                <mat-label [attr.for]="'throw' + i.toString().padStart(2, '0')">{{ messages.formAddMatchThrow }} {{ i.toString().padStart(2, '0') }}</mat-label>
-                <input
-                    type="text"
-                    [id]="'throw' + i.toString().padStart(2, '0')"
-                    matInput
-                    [placeholder]="'Lanzamiento ' + i"
-                    formControlName="throw{{i.toString().padStart(2, '0')}}"
-                >
-            </mat-form-field>
-        }
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track $index) {
+                <mat-form-field>
+                    <mat-label [attr.for]="'throw' + i.toString().padStart(2, '0')">{{ messages.formAddMatchThrow }} {{ i.toString().padStart(2, '0') }}</mat-label>
+                    <input
+                        type="text"
+                        [id]="'throw' + i.toString().padStart(2, '0')"
+                        matInput
+                        [placeholder]="'Lanzamiento ' + i"
+                        formControlName="throw{{i.toString().padStart(2, '0')}}"
+                    >
+                </mat-form-field>
+            }
+        </div>
+
 
         <button
             mat-button
             mat-flat-button
-            color="primary mb-4"
+            color="primary"
             (click)="onCreate()"
         >
             <mat-icon>add</mat-icon>
