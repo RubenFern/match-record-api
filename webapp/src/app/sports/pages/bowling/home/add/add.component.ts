@@ -23,9 +23,4 @@ export class AddComponent
 {
     public messages: Messages = messagesApp;
     public selected: string = messagesApp.selectBowlingAddMatch;
-
-    changeForm(): void
-    {
-        console.log(this.selected);
-    }
 }

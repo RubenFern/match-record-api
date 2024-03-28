@@ -2,12 +2,12 @@
 
 <mat-form-field>
     <mat-label>{{ messages.selectBowlingAddTitle }}</mat-label>
-    <mat-select (selectionChange)="changeForm()" [(value)]="selected">
+    <mat-select [(value)]="selected">
         <mat-option [value]="messages.selectBowlingAddMatch">{{ messages.selectBowlingAddMatch }}</mat-option>
         <mat-option [value]="messages.selectBowlingAddEncounter">{{ messages.selectBowlingAddEncounter }}</mat-option>
         <mat-option [value]="messages.selectBowlingAddTournament">{{ messages.selectBowlingAddTournament }}</mat-option>
     </mat-select>
-  </mat-form-field>
+</mat-form-field>
 
 @if (selected === messages.selectBowlingAddMatch) {
     <app-bowling-add-match />

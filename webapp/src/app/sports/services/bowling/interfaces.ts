@@ -25,6 +25,20 @@ export interface CreateTeam
     foundationYear: number;
 }
 
+export interface CreateMatch
+{
+    throw01: number;
+    throw02: number;
+    throw03: number;
+    throw04: number;
+    throw05: number;
+    throw06: number;
+    throw07: number;
+    throw08: number;
+    throw09: number;
+    throw10: number;
+}
+
 export interface File
 {
     lastModified: number;

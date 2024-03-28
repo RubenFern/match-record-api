@@ -25,4 +25,8 @@ export interface Messages
     selectBowlingAddMatch: string;
     selectBowlingAddEncounter: string;
     selectBowlingAddTournament: string;
+
+    formAddMatchTitle: string;
+    formAddMatchThrow: string;
+    formAddMatchCreate: string;
 }
