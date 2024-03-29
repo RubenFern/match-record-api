@@ -15,7 +15,12 @@ export class MatchesController
     @Post('create')
     create(@Req() req: Request, @Res() res: Response, @Body() createMatchDto: CreateMatchDto)
     {
-        return this.matchesService.create(req, createMatchDto)
+        if (createMatchDto['createMatch'])
+            return this.matchesService.createAuth(req, createMatchDto['createMatch'])
+                .then(message => res.status(HttpStatus.CREATED).send(message))
+                .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error));
+
+        return this.matchesService.createAuth(req, createMatchDto)
             .then(message => res.status(HttpStatus.CREATED).send(message))
             .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error));
     }

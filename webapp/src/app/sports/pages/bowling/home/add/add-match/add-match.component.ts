@@ -40,6 +40,6 @@ export class AddMatchComponent implements OnInit
 
     onCreate(): void
     {
-
+        this.bowlingService.createMatch(this.currentCreateMatch).subscribe();
     }
 }

@@ -35,7 +35,7 @@ export class PlayersController
     @Get('player')
     getPlayer(@Req() req: Request, @Res() res: Response)
     {
-        return this.playersService.getPlayer(req)
+        return this.playersService.getPlayerAuth(req)
             .then(player => res.status(HttpStatus.OK).send(player))
             .catch(error => res.status(HttpStatus.BAD_REQUEST).send(error));
     }
