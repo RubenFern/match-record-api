@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 
-import { CreateMatch, Player, Team } from './interfaces';
+import { CreateEncounter, CreateMatch, Player, Team } from './interfaces';
 import { environments } from '../../../../environments/environments';
 
 @Injectable({
@@ -47,6 +47,15 @@ export class BowlingService
     public createMatch(createMatch: CreateMatch): Observable<boolean>
     {
         return this.http.post(`${ environments.API_GATEWAY }/bowling/matches/create`, { createMatch }, { headers: this.headers })
+            .pipe(
+                catchError( () => of(false) ),
+                map(value => !!value )
+            );
+    }
+
+    public createEncounter(createEncounter: CreateEncounter): Observable<boolean>
+    {
+        return this.http.post(`${ environments.API_GATEWAY }/bowling/encounters/create`, { createEncounter }, { headers: this.headers })
             .pipe(
                 catchError( () => of(false) ),
                 map(value => !!value )

@@ -1,1 +1,39 @@
-<p class="text-white">Form para añadir un encuentro</p>
+<div class="h-3/6 grid content-center" id="form">
+    <form [formGroup]="encounterForm" class="flex flex-col content-center mx-auto w-full p-5 lg:p-0 lg:w-5/12">
+        <h1 class="text-4xl text-center mb-4 text-dark dark:text-white">{{ messages.formAddEncounterTitle }}</h1>
+
+        <mat-form-field>
+            <mat-label for="name">{{ messages.formAddEncounterName }}</mat-label>
+            <input type="text" id="name" matInput placeholder="messages.formAddEncounterName" formControlName="name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label for="description">{{ messages.formAddEncounterDescription }}</mat-label>
+            <input type="text" id="description" matInput placeholder="messages.formAddEncounterDescription" formControlName="description">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>{{ messages.formAddEncounterDate }}</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button
+            mat-button
+            mat-flat-button
+            color="primary"
+            (click)="onCreate()"
+        >
+            <mat-icon>save</mat-icon>
+            {{ messages.formAddEncounterCreate }}
+        </button>
+
+        <div class="flex justify-end mt-5 text-dark dark:text-white">
+            <a routerLink="/auth/login">¿Ya tienes una cuenta?</a>
+        </div>
+    </form>
+</div>

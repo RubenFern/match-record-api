@@ -29,4 +29,10 @@ export interface Messages
     formAddMatchTitle: string;
     formAddMatchThrow: string;
     formAddMatchCreate: string;
+
+    formAddEncounterTitle: string;
+    formAddEncounterName: string;
+    formAddEncounterDescription: string;
+    formAddEncounterDate: string;
+    formAddEncounterCreate: string;
 }

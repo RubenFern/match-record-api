@@ -52,7 +52,13 @@ export const messagesApp: Messages = {
     'selectBowlingAddEncounter': 'Encuentro',
     'selectBowlingAddTournament': 'Torneo',
 
-    'formAddMatchTitle': 'Añade el número total de bolos derribados',
+    'formAddMatchTitle': 'Añade las puntuaciones de la partida',
     'formAddMatchThrow': 'Lanzamiento',
     'formAddMatchCreate': 'Crear Partido',
+
+    'formAddEncounterTitle': 'Añadir encuentro entre jugadores',
+    'formAddEncounterName': 'Nombre del encuentro',
+    'formAddEncounterDescription': 'Descripción',
+    'formAddEncounterDate': 'Fecha del encuentro',
+    'formAddEncounterCreate': 'Crear Encuentro',
 }

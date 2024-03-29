@@ -41,6 +41,11 @@ export interface CreateMatch
     throw10: number;
 }
 
+export interface CreateEncounter
+{
+
+}
+
 export interface File
 {
     lastModified: number;
