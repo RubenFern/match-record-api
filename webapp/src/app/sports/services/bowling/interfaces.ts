@@ -27,6 +27,8 @@ export interface CreateTeam
 
 export interface CreateMatch
 {
+    encounterId: string;
+    playerId: string;
     throw01: number;
     throw02: number;
     throw03: number;

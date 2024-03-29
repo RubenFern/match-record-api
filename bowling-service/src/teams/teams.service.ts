@@ -77,7 +77,7 @@ export class TeamsService
             throw new UnauthorizedException();
 
         try {
-            const player: PlayerDto = await this.playersService.getPlayer(request);
+            const player: PlayerDto = await this.playersService.getPlayerAuth(request);
 
             if (!player.teamId)
                 return undefined;

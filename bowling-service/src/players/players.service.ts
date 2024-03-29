@@ -55,7 +55,7 @@ export class PlayersService
         }
     }
 
-    async getPlayer(request: Request): Promise<PlayerDto | undefined>
+    async getPlayerAuth(request: Request): Promise<PlayerDto | undefined>
     {
         const token = extractTokenFromHeader(request);
 
@@ -64,8 +64,18 @@ export class PlayersService
 
         const payload = await this.jwtService.verifyAsync(token, { secret: process.env.SECRET_KEY_TOKEN });
 
+        return this.getPlayer(payload.username);
+    }
+
+    async getPlayerByUsername(username: string): Promise<PlayerDto | undefined>
+    {
+        return this.getPlayer(username);
+    }
+
+    private async getPlayer(username: string): Promise<PlayerDto | undefined>
+    {
         try {
-            const player = await this.playersRepository.findOne({ where: { username: payload.username } });
+            const player = await this.playersRepository.findOne({ where: { username: username } });
 
             if (!player)
                 return undefined;
